@@ -1,0 +1,39 @@
+<configuration>
+	<property resource="application.properties"></property>
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${logging.pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${logging.file}</file>
+		<append>true</append>
+		<encoder>
+			<pattern>${logging.pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="REQ_RESP_LOG_INTERCEPT"
+		class="ch.qos.logback.core.FileAppender">
+		<file>${logging.req.resp.intercept.file}</file>
+		<append>true</append>
+		<encoder>
+			<pattern>${logging.pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<logger
+		name="com.example.showcase.interceptor.ReqRespLogInterceptor"
+		level="INFO" additivity="false">
+		<appender-ref ref="REQ_RESP_LOG_INTERCEPT"></appender-ref>
+	</logger>
+
+	<root level="info">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

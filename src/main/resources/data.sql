@@ -1,0 +1,1 @@
+insert into user values ('ideepak', 'Deepak', 'J', 'anypass@anypass.com', 1234567890);
